@@ -11,21 +11,36 @@ export default function TodoApp() {
     setTitle(value);
   }
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
 
     const newTodo = {
-        id: crypto.randomUUID(),
-        title: title,
-        completed: false
-    }
+      id: crypto.randomUUID(),
+      title: title,
+      completed: false,
+    };
 
-    const temp = [ ... todos];
+    const temp = [...todos];
     temp.unshift(newTodo);
 
     setTodos(temp);
+
+    setTitle('');
   }
+
+  function handleUpdate(id, value){
+    const temp = [...todos];
+    const item = temp.find(item => item.id === id);
+    item.title = value;
+    setTodos(temp);
+  }
+
+  function handleDelete(id){
+    const temp = todos.filter(item => item.id !== id);
   
+    setTodos(temp);
+  }
+
   return (
     <div classsName="todoContainer">
       <form className="todoCreateForm" onSubmit={handleSubmit}>
@@ -44,11 +59,9 @@ export default function TodoApp() {
       </form>
 
       <div className="todosContainer">
-        {
-            todos.map(item => (
-                <Todo ket={item.id} item={item}/>
-            ))
-        }
+        {todos.map((item) => (
+          <Todo ket={item.id} item={item} onUpdate={handleUpdate} onDelete={handleDelete}/>
+        ))}
       </div>
     </div>
   );
