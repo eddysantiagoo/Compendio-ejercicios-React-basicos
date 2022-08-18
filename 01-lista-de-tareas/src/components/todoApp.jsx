@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Todo from "./todo";
 
+import "./todoApp.css";
+
 export default function TodoApp() {
   const [title, setTitle] = useState("Hola");
   const [todos, setTodos] = useState([]);
@@ -42,7 +44,7 @@ export default function TodoApp() {
   }
 
   return (
-    <div classsName="todoContainer">
+    <div className="todoContainer">
       <form className="todoCreateForm" onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
@@ -52,7 +54,7 @@ export default function TodoApp() {
         />
         <input
           onClick={handleSubmit}
-          classsName="buttonCreate"
+          className="buttonCreate"
           type="submit"
           value="Create tarea"
         />
