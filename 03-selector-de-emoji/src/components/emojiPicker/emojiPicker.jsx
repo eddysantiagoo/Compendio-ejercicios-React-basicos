@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
-import { data as emojiList } from "./emojiPicker/data";
-import { EmojiSearch } from "./emojiPicker/EmojiSearch";
+import { data as emojiList } from "./data"; 
+import { EmojiSearch } from "./emojiSearch"
 
 export function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ export function EmojiPicker(props, inputRef) {
   }
 
   function handleSearch(e) {
-    const q = e.target.value.toLowerCase;
+    const q = e.target.value.toLowerCase();
 
     if (!!q) {
       const search = emojiList.filter((emoji) => {
@@ -33,7 +33,7 @@ export function EmojiPicker(props, inputRef) {
         <EmojiSearch onSearch={handleSearch} />
         <div>
           {emojiList.map((emoji) => (
-            <div>{emoji.symbol}</div>
+            <div key={emoji.symbol}>{emoji.symbol}</div>
           ))}
         </div>
       </div>

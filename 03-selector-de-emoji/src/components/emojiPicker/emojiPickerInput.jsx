@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import EmojiPicker from "../emojiPicker";
+import EmojiPicker from "./emojiPicker";
 
 export default function EmojiPickerInput() {
   const refInput = useRef(null);

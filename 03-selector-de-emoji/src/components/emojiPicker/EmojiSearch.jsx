@@ -1,5 +1,5 @@
-export default function EmojiSearch ({onSearch}){
+export  function EmojiSearch ({onSearch}){
     return(
-        <div>Mi locooo</div>
+        <input onChange={onSearch} />
     ) 
 }
