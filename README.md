@@ -1,1 +1,1 @@
-# Compendio-ejercicios-React-basicoss
+# Compendio-ejercicios-React-basicos
