@@ -12,7 +12,7 @@ export const data = [
     {
         symbol: "🐦",
         name: "paloma",
-        keywords: "paloma maligna santa ave",
+        keywords: "paloma maligna santa ave facha",
     },
     {
         symbol: "🥀",
