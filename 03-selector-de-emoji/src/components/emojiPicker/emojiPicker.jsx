@@ -3,6 +3,8 @@ import EmojiButton from "./emojiButton";
 import { data as emojiList } from "./data";
 import { EmojiSearch } from "./emojiSearch";
 
+import styles from "./emojiPicker.module.scss";
+
 export function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
   const [emojis, setEmojis] = useState(emojiList);
@@ -10,14 +12,14 @@ export function EmojiPicker(props, inputRef) {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("click", e => {
+    window.addEventListener("click", (e) => {
       if (!containerRef.current.contains(e.target)) {
-          setIsOpen(false);
-          setEmojis(emojiList);
+        setIsOpen(false);
+        setEmojis(emojiList);
       }
-    })
+    });
   }, []);
-    
+
   function handleClickOpen() {
     setIsOpen(!isOpen);
   }
@@ -39,7 +41,7 @@ export function EmojiPicker(props, inputRef) {
     }
   }
 
-  function handleClickEmoji(emoji){
+  function handleClickEmoji(emoji) {
     const cursorPos = inputRef.current.selectionStart;
     const text = inputRef.current.value;
     const prev = text.slice(0, cursorPos);
@@ -49,17 +51,17 @@ export function EmojiPicker(props, inputRef) {
     inputRef.current.selectionStart = cursorPos + emoji.symbol.length;
     inputRef.current.selectionEnd = cursorPos + emoji.symbol.length;
     inputRef.current.focus();
-
-    
   }
 
   return (
-    <div ref={containerRef}>
-      <button onClick={handleClickOpen}>🥱</button>
+    <div ref={containerRef} className={styles.inputContainer}>
+      <button onClick={handleClickOpen} className={styles.emojiPickerButton}>
+        🥱
+      </button>
       {isOpen ? (
-        <div>
+        <div className={styles.emojiPickerContainer}>
           <EmojiSearch onSearch={handleSearch} />
-          <div>
+          <div className={styles.emojiList}>
             {emojis.map((emoji) => (
               <EmojiButton
                 key={emoji.symbol}
