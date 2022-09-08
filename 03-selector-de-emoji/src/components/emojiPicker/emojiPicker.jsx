@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import EmojiButton from "./emojiButton";
 import { data as emojiList } from "./data";
 import { EmojiSearch } from "./emojiSearch";
@@ -7,6 +7,17 @@ export function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
   const [emojis, setEmojis] = useState(emojiList);
 
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener("click", e => {
+      if (!containerRef.current.contains(e.target)) {
+          setIsOpen(false);
+          setEmojis(emojiList);
+      }
+    })
+  }, []);
+    
   function handleClickOpen() {
     setIsOpen(!isOpen);
   }
@@ -38,10 +49,12 @@ export function EmojiPicker(props, inputRef) {
     inputRef.current.selectionStart = cursorPos + emoji.symbol.length;
     inputRef.current.selectionEnd = cursorPos + emoji.symbol.length;
     inputRef.current.focus();
+
+    
   }
 
   return (
-    <div>
+    <div ref={containerRef}>
       <button onClick={handleClickOpen}>🥱</button>
       {isOpen ? (
         <div>
