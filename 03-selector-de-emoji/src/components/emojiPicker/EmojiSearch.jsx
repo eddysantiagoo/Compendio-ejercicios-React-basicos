@@ -13,6 +13,7 @@ export function EmojiSearch({ onSearch }) {
     <input
       className={styles.search}
       type="text"
+      placeHolder="Busque seu emoji"
       onChange={handleChange}
       value={value}
     />
