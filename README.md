@@ -20,7 +20,7 @@
 
 <h3>Lista de tareas</h3>
 
-Mitico ejercicio del to-do, creación de tareas, modificación y eliminación de las mismas, practica paa el uso del 
+Mitico ejercicio del to-do, creación de tareas, modificación y eliminación de las mismas, practica para el uso del hook `useState`
 
 Link: ()
 
