@@ -22,7 +22,7 @@
 
 Mitico ejercicio del to-do, creación de tareas, modificación y eliminación de las mismas, practica para el uso del hook `useState`
 
-Link: ()
+Link: https://compendio-ejercicios-react-1-lista-tarea.vercel.app/
 
 
 
